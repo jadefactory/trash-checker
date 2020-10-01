@@ -5,24 +5,23 @@ const bodyParser = require('body-parser');
 
 const MongoClient = require('mongodb').MongoClient;
 
+require('dotenv').config();
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let db;
-MongoClient.connect(
-  'mongodb+srv://jadefactory:hDHNAJyFhVKMHjmq@cluster0.69hjx.mongodb.net/<dbname>?retryWrites=true&w=majority',
-  function (error, client) {
-    if (error) {
-      return console.log(error);
-    }
-
-    db = client.db('trashchecker');
-
-    app.listen(8080, function () {
-      console.log('database is connected to port 8080');
-    });
+MongoClient.connect(process.env.DB_URL, function (error, client) {
+  if (error) {
+    return console.log(error);
   }
-);
+
+  db = client.db('trashchecker');
+
+  app.listen(process.env.PORT, function () {
+    console.log('database is connected to port 4000');
+  });
+});
 
 app.get('/', function (_, res) {
   res.sendFile(__dirname + '/index.html');
