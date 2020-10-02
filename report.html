@@ -6,77 +6,106 @@
     <title>미등록정보 입력하기</title>
     <style>
       body {
-        background: orange;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: fixed;
+        background: lightskyblue;
+        line-height: 1.5;
+        margin: 0;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #222;
       }
-
-      body:before {
-        content: '';
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.65);
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-
       a {
         text-decoration: none;
+        color: #222;
       }
 
-      .search {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+      .report {
+        width: 800px;
+        background-color: #e7f5ff;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 25px;
+        box-sizing: border-box;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
       }
-      .search h1 {
+      .report span {
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #4263eb;
+      }
+
+      .report input[type='text'] {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+
+      .report input[type='text']:hover {
+        border: 1px solid dodgerblue;
+        box-shadow: 0 0 5px dodgerblue;
+      }
+
+      .report input[type='text']:focus {
+        outline: none;
+      }
+
+      .report input[type='text']:focus::placeholder {
+        visibility: hidden;
+      }
+
+      .report p {
+        overflow: hidden;
+      }
+      .report p a {
+        float: right;
+        color: #364fc7;
+        font-weight: 500;
+      }
+      .report p a:hover {
+        text-decoration: underline;
+      }
+      .report button {
+        background-color: #339af0;
         color: #fff;
+        width: 200px;
+        padding: 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .report button:hover {
+        background-color: #1864ab;
+      }
+
+      .report h1 {
+        color: royalblue;
         text-align: center;
         font-weight: normal;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
         font-size: 36px;
-      }
-      .search input[type='text'] {
-        width: 300px;
-        padding: 20px;
-        border: none;
-        margin-right: -6px;
-        border-radius: 40px 0 0 40px;
-        outline: none;
-        padding-left: 40px;
-        box-sizing: border-box;
-      }
-      .search input[type='submit'] {
-        width: 100px;
-        padding: 20px;
-        border: none;
-        border-radius: 0 40px 40px 0;
-        cursor: pointer;
-        background-color: orange;
-        color: #fff;
-        outline: none;
-      }
-      .search input[type='submit']:hover {
-        background-color: darkgoldenrod;
-      }
-      .search input[type='text']::placeholder {
-        font-size: 20px;
+        line-height: 1.5;
       }
     </style>
   </head>
   <body>
-    <form action="/add" method="POST" class="search">
+    <form action="/add" method="POST" class="report">
       <h1>등록하실 정보를 입력해주세요</h1>
-      <label>이름</label>
-      <input type="text" placeholder="(예)달걀껍데기" name="trash" />
-      <label>유형</label>
-      <input type="text" placeholder="(예)일반쓰레기" name="type" />
-      <input type="submit" value="전송하기" />
+      <span>이름</span>
+      <input type="text" placeholder="(예) 달걀껍데기" name="trash" />
+      <span>유형</span>
+      <input type="text" placeholder="(예) 일반쓰레기" name="type" />
+      <p>
+        <a href="/">홈으로 이동</a>
+      </p>
+      <button type="submit">등록하기</button>
     </form>
-    <a href="/">홈으로 이동</a>
   </body>
 </html>

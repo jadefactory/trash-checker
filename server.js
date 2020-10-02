@@ -32,13 +32,15 @@ app.get('/report', function (_, res) {
 });
 
 app.post('/add', function (req, res) {
-  res.render('./complete.ejs');
   console.log(req.body.trash);
   console.log(req.body.type);
   db.collection('list').insertOne(
     { trash: req.body.trash, type: req.body.type },
     function (error, result) {
       console.log('저장완료');
+      res.send(
+        '<script>alert("입력하신 정보의 등록이 완료되었습니다."); location.href="/";</script>'
+      );
     }
   );
 });
