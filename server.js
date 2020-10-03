@@ -11,6 +11,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let db;
+let port = process.env.PORT || 8080;
 MongoClient.connect(process.env.DB_URL, function (error, client) {
   if (error) {
     return console.log(error);
@@ -18,7 +19,7 @@ MongoClient.connect(process.env.DB_URL, function (error, client) {
 
   db = client.db('trashchecker');
 
-  app.listen(process.env.PORT, function () {
+  app.listen(port, function () {
     console.log('database is connected to port 4000');
   });
 });
